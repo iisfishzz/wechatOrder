@@ -42,8 +42,4 @@ public class OrderForm2OrderDTO {
         orderDto.setOrderDetails(orderDetailList);
         return orderDto;
     }
-    public static List<OrderMasterDTO> convert(List<OrderForm> orderMasterList){
-        List<OrderMasterDTO> orderMasterDTOList = orderMasterList.stream().map(e -> convert(e)).collect(Collectors.toList());
-        return orderMasterDTOList;
-    }
 }
