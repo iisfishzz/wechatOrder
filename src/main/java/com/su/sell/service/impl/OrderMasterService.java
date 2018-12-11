@@ -70,9 +70,9 @@ public class OrderMasterService implements IOrderMasterService {
             detailRepository.save(orderDetail);
         }
         OrderMaster orderMaster = new OrderMaster();
+        dto.setOrderId(orderId);
         BeanUtils.copyProperties(dto,orderMaster);
         orderMaster.setOrderAmount(totalAmount);
-        orderMaster.setOrderId(orderId);
         orderMaster.setOrderStatus(OrderStatusEnum.NEW.getCode());
         orderMaster.setPayStatus(PayStatusEnum.WAIT.getCode());
         masterRepository.save(orderMaster);

@@ -31,7 +31,7 @@ public class OrderForm2OrderDTO {
         orderDto.setBuyerName(orderForm.getName());
         orderDto.setBuyerAddress(orderForm.getAddress());
         orderDto.setBuyerPhone(orderForm.getPhone());
-        orderDto.setBuyerOpenid(orderForm.getOpenId());
+        orderDto.setBuyerOpenid(orderForm.getOpenid());
         List<OrderDetail> orderDetailList;
         try {
             orderDetailList = gson.fromJson(orderForm.getItems(),new TypeToken<List<OrderDetail>>(){}.getType());

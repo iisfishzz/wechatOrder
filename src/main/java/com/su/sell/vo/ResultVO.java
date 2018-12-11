@@ -3,9 +3,19 @@ package com.su.sell.vo;
 import lombok.Data;
 
 /**
- * createBy scott
- * 返回给前端的对象内容
+ * http请求返回的最外层对象
+ * Created by 廖师兄
+ * 2017-05-12 14:13
  */
 @Data
-public class ResultVO {
+public class ResultVO<T> {
+
+    /** 错误码. */
+    private Integer code;
+
+    /** 提示信息. */
+    private String msg;
+
+    /** 具体内容. */
+    private T data;
 }

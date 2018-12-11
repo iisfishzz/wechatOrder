@@ -20,7 +20,7 @@ public class OrderForm {
     private String address;
     /** 买家微信openId */
     @NotEmpty(message = "openId必填")
-    private String openId;
+    private String openid;
     /** 购物车信息 */
     @NotEmpty(message = "购物车不能为空")
     private String items;

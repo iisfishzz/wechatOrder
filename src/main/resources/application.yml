@@ -6,3 +6,9 @@ spring:
     url: jdbc:mysql://127.0.0.1/wechat_order?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: true
+#    全局配置返回内容为notnull
+  jackson:
+    default-property-inclusion: non_null
+  profiles:
+    active: dev
+

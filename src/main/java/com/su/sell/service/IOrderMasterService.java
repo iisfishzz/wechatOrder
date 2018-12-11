@@ -1,12 +1,9 @@
 package com.su.sell.service;
 
-import com.su.sell.dataObject.OrderDetail;
 import com.su.sell.dto.OrderMasterDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.jaxb.SpringDataJaxb;
 
-import java.util.List;
 
 public interface IOrderMasterService {
     /** 创建订单. */
