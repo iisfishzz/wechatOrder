@@ -18,5 +18,6 @@ public interface IOrderMasterService {
     OrderMasterDTO finish(OrderMasterDTO dto);
     /** 支付订单. */
     OrderMasterDTO paid(OrderMasterDTO dto);
-
+    /** 全部的订单列表 */
+    Page<OrderMasterDTO> findAll(Pageable page);
 }

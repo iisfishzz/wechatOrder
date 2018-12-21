@@ -41,6 +41,7 @@ public class WechatController {
         //2.调用方法
         String url = accountConfig.getContent_url();
         String redirectUrl = wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAUTH2_SCOPE_BASE, URLEncoder.encode(returnUrl));
+        log.info("获取code回调地址:{}",redirectUrl);
         return "redirect:" + redirectUrl;
     }
     @GetMapping("/userInfo")
@@ -53,6 +54,8 @@ public class WechatController {
             throw new SellException(ResultEnum.WECHAT_MP_ERROR.getCode(),e.getError().getErrorMsg());
         }
         String openId = wxMpOauth2AccessToken.getOpenId();
-        return "redirect:" + returnUrl + "?openId=" + openId;
+        log.info("获取微信openid:{}",openId);
+        log.info("回调地址:{}",returnUrl +"openid="+openId);
+        return "redirect:" + returnUrl + "?openid=" + openId;
     }
 }

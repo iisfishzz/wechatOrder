@@ -160,4 +160,12 @@ public class OrderMasterService implements IOrderMasterService {
     public OrderMasterDTO paid(OrderMasterDTO dto) {
         return null;
     }
+
+    @Override
+    public Page<OrderMasterDTO> findAll(Pageable page) {
+        Page<OrderMaster> all = masterRepository.findAll(page);
+        List<OrderMasterDTO> convert = OrderMaster2OrderMasterDTO.convert(all.getContent());
+        Page<OrderMasterDTO> orderDtoPage = new PageImpl<>(convert,page,all.getTotalElements());
+        return orderDtoPage;
+    }
 }
