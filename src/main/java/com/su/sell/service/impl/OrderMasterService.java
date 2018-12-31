@@ -14,6 +14,7 @@ import com.su.sell.repository.OrderDetailRepository;
 import com.su.sell.repository.OrderMasterRepository;
 import com.su.sell.repository.ProductInfoRepository;
 import com.su.sell.service.IOrderMasterService;
+import com.su.sell.service.WebSocket;
 import com.su.sell.util.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -44,7 +45,8 @@ public class OrderMasterService implements IOrderMasterService {
     private ProductInfoRepository productInfoRepository;
     @Autowired
     private ProductService productService;
-
+    @Autowired
+    private WebSocket webSocket;
 
     @Override
     public OrderMasterDTO create(OrderMasterDTO dto) {
@@ -83,6 +85,7 @@ public class OrderMasterService implements IOrderMasterService {
         ).collect(Collectors.toList());
 
         productService.decreseStock(cartDtoList);
+        webSocket.sendMessage(orderMaster.getOrderId());
         return dto;
     }
 

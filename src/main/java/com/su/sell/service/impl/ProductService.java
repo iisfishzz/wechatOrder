@@ -71,4 +71,30 @@ public class ProductService implements IProductService{
         }
         repository.saveAll(productInfoList);
     }
+
+    @Override
+    public ProductInfo onSale(String productId) {
+        ProductInfo one = findOne(productId);
+        if(one==null){
+            throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+        }
+        if(one.getProductStatus().equals(ProductStatusEnum.UP.getCode())){
+            throw new SellException(ResultEnum.PARAM_ERROR);
+        }
+        one.setProductStatus(ProductStatusEnum.UP.getCode());
+        return repository.save(one);
+    }
+
+    @Override
+    public ProductInfo offSale(String productId) {
+        ProductInfo one = findOne(productId);
+        if(one==null){
+            throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
+        }
+        if(one.getProductStatus().equals(ProductStatusEnum.DOWN.getCode())){
+            throw new SellException(ResultEnum.PARAM_ERROR);
+        }
+        one.setProductStatus(ProductStatusEnum.DOWN.getCode());
+        return repository.save(one);
+    }
 }

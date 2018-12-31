@@ -11,4 +11,8 @@ spring:
     default-property-inclusion: non_null
   profiles:
     active: dev
-
+  redis:
+    host: 127.0.0.1
+    password: rmt$redis1234
+    port: 6379
+    database: 15

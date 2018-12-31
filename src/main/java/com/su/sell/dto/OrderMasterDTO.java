@@ -1,10 +1,12 @@
 package com.su.sell.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.su.sell.dataObject.OrderDetail;
 import com.su.sell.enums.OrderStatusEnum;
 import com.su.sell.enums.PayStatusEnum;
+import com.su.sell.util.EnumUtil;
 import com.su.sell.util.serializer.Date2LongSerializer;
 import lombok.Data;
 
@@ -50,4 +52,14 @@ public class OrderMasterDTO {
     @JsonSerialize(using = Date2LongSerializer.class)
     private Date updateTime;
     List<OrderDetail> orderDetails;
+
+    /** 订单状态的中文表示 */
+    @JsonIgnore //忽略掉此属性
+    public OrderStatusEnum getOrderStatusEnum(){
+        return EnumUtil.getEnumByCode(orderStatus,OrderStatusEnum.class);
+    }
+    /** 支付状态的中文表示 */
+    public PayStatusEnum getPayStatusEnum(){
+        return EnumUtil.getEnumByCode(payStatus,PayStatusEnum.class);
+    }
 }

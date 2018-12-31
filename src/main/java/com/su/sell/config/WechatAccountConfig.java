@@ -14,4 +14,6 @@ public class WechatAccountConfig {
     private String mchId;
     private String merKey;
     private String keyPath;
+    private String openAppid;
+    private String openSecret;
 }

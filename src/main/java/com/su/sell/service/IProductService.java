@@ -21,4 +21,8 @@ public interface IProductService  {
     ProductInfo save(ProductInfo productInfo);
     void increaseStock(List<CartDto> cartDtoList);
     void decreseStock(List<CartDto> cartDtoList);
+    //上架
+    ProductInfo onSale(String productId);
+    //下架
+    ProductInfo offSale(String productId);
 }
